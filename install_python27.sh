@@ -176,7 +176,7 @@ python_extra() {
   ${dest}/python$python2vers/bin/easy_install pip
   #ln -s ${dest}/python$python2vers/bin/pip ${dest}/bin/pip
   if [ ! -e /usr/bin/pip2.7 ];then
-    ln -s /usr/bin/pip2.7 ${dest}/bin/pip2.7
+    ln -s ${dest}/python$python2vers/bin/pip2.7 /usr/bin/pip2.7
   fi
 
   ${dest}/python$python2vers/bin/pip install virtualenv
