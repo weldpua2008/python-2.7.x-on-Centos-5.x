@@ -17,6 +17,34 @@ usescriptio="true"
 ## This variable specifies the path for the new binaries
 dest="/opt"
 
+while getopts ":p:n:u:h" opt; do
+  case $opt in
+    d)dest=${OPTARG}
+
+      ;;
+    n)
+      if [ "${OPTARG}" =="no" ];then
+         install_extras="false"
+      fi
+      ;;
+    u)
+      if [ "${OPTARG}" =="no" ];then
+         usescriptio="false"
+      fi
+      ;;
+    h)
+     echo "-p /opt (by default: /opt) -- destination path prefix for the python"
+	 echo "-u no (by default: yes)    -- This variable enables the use of script.io disks endpoint."
+	 echo "-n no (by default: yes)    --  If you do not wish to install python extras (pip, virtualenv and fabric)"
+	exit 0
+	;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+
 ## This variable specifies if extras need to be installed
 install_extras="true"
 
@@ -26,6 +54,9 @@ fallback_url="http://www.python.org/ftp/python/$fallback_vers/Python-$fallback_v
 fallback_setuptools_vers="0.6c11"
 fallback_setuptools_url="https://pypi.python.org/packages/2.7/s/setuptools/setuptools-$fallback_setuptools_vers-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea"
 
+if [ ! -d "${dest}" ];then
+  mkdir -p "${dest}"
+fi
 
 if [ "$(id -u)" != "0" ]; then
         echo "Gotta be root to run this script."
