@@ -190,7 +190,7 @@ python_extra() {
 python_clean() {
   if [ -d "$tmpdir" ]; then
     rm -fr $tmpdir ;
-    exit 0
+#    exit 0
   fi
 }
 
