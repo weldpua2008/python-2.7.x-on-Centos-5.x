@@ -15,6 +15,6 @@ before_install:
   - sleep 5
   - docker pull $OS_TYPE:$OS_VERSION
 script:
-  - travis_wait docker run --rm=true -v `pwd`:/python27:rw $OS_TYPE:$OS_VERSION /bin/bash -c "/python27/install_python27.sh && /python27/testing/test.sh"
+  - docker run --rm=true -v `pwd`:/python27:rw $OS_TYPE:$OS_VERSION /bin/bash -c "/python27/install_python27.sh && /python27/testing/test.sh"
 notifications:
   email: false
