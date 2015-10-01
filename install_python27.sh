@@ -20,7 +20,6 @@ dest="/opt"
 while getopts ":p:n:u:h" opt; do
   case $opt in
     d)dest=${OPTARG}
-
       ;;
     n)
       if [ "${OPTARG}" =="no" ];then
