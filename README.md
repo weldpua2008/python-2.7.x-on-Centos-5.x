@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/weldpua2008/python-2.7.x-on-Centos-5.x.svg)](https://travis-ci.org/weldpua2008/python-2.7.x-on-Centos-5.x)
 # Python 2.7.x on CentOS 5.x
 
 
